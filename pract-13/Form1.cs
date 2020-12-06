@@ -25,6 +25,7 @@ namespace pract_13
                 SizeTable.columnCount = Convert.ToInt32(read.ReadLine());
                 SizeTable.rowCount = Convert.ToInt32(read.ReadLine());
                 LibMass.SizeTable(tableNumbers, SizeTable.columnCount, SizeTable.rowCount);
+                LibMass.FillTable(tableNumbers, (int)minNumber.Value, (int)maxNumber.Value);
                 read.Close();
                 sizeTable.Text = "Размер таблицы -" + SizeTable.rowCount + "x" + SizeTable.columnCount;
             }
@@ -68,15 +69,8 @@ namespace pract_13
         }
 
         private void GetAnswer_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                answer.Text = FindColumns.CountColumns(tableNumbers).ToString();
-            }
-            catch(NullReferenceException ex)
-            {
-                MessageBox.Show("Заполните таблицу значениями.");
-            }
+        {            
+            answer.Text = FindColumns.CountColumns(tableNumbers).ToString();
         }
 
         private void FillMainTable_Click(object sender, EventArgs e)
@@ -93,6 +87,7 @@ namespace pract_13
             SizeTable.columnCount = (int)countColumns.Value;
             SizeTable.rowCount = (int)countRows.Value;
             LibMass.SizeTable(tableNumbers, SizeTable.columnCount, SizeTable.rowCount);
+            LibMass.FillTable(tableNumbers, (int)minNumber.Value, (int)maxNumber.Value);
             sizeTable.Text = "Размер таблицы -" + SizeTable.rowCount + "x" + SizeTable.columnCount;
         }
 
@@ -101,6 +96,7 @@ namespace pract_13
             SizeTable.columnCount = (int)countColumns.Value;
             SizeTable.rowCount = (int)countRows.Value;
             LibMass.SizeTable(tableNumbers, SizeTable.columnCount, SizeTable.rowCount);
+            LibMass.FillTable(tableNumbers, (int)minNumber.Value, (int)maxNumber.Value);
             sizeTable.Text = "Размер таблицы -" + SizeTable.rowCount + "x" + SizeTable.columnCount;
         }
 
@@ -142,15 +138,8 @@ namespace pract_13
         }
 
         private void GetAnswerContext_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                answer.Text = FindColumns.CountColumns(tableNumbers).ToString();
-            }
-            catch
-            {
-                MessageBox.Show("Заполните таблицу значениями.");
-            }            
+        {            
+            answer.Text = FindColumns.CountColumns(tableNumbers).ToString();
         }
     }
     public class SizeTable
