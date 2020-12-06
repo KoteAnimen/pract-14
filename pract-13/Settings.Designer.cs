@@ -100,21 +100,23 @@
             // 
             // SaveSizeTable
             // 
-            this.SaveSizeTable.Location = new System.Drawing.Point(34, 117);
+            this.SaveSizeTable.Location = new System.Drawing.Point(34, 109);
             this.SaveSizeTable.Name = "SaveSizeTable";
-            this.SaveSizeTable.Size = new System.Drawing.Size(97, 32);
+            this.SaveSizeTable.Size = new System.Drawing.Size(97, 40);
             this.SaveSizeTable.TabIndex = 4;
-            this.SaveSizeTable.Text = "Сохранить";
+            this.SaveSizeTable.Text = "Сохранить и изменить";
             this.SaveSizeTable.UseVisualStyleBackColor = true;
+            this.SaveSizeTable.Click += new System.EventHandler(this.SaveSizeTable_Click);
             // 
             // CanselSettings
             // 
-            this.CanselSettings.Location = new System.Drawing.Point(147, 117);
+            this.CanselSettings.Location = new System.Drawing.Point(147, 109);
             this.CanselSettings.Name = "CanselSettings";
-            this.CanselSettings.Size = new System.Drawing.Size(97, 32);
+            this.CanselSettings.Size = new System.Drawing.Size(97, 40);
             this.CanselSettings.TabIndex = 5;
             this.CanselSettings.Text = "Отмена";
             this.CanselSettings.UseVisualStyleBackColor = true;
+            this.CanselSettings.Click += new System.EventHandler(this.CanselSettings_Click);
             // 
             // Settings
             // 

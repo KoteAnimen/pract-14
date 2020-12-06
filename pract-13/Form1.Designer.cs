@@ -43,6 +43,7 @@
             this.numerBox = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.CreateRandomTable = new System.Windows.Forms.ToolStripButton();
+            this.TableSettings = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableNumbers = new System.Windows.Forms.DataGridView();
             this.contextMenuTable = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -175,7 +176,8 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CreateRandomTable});
+            this.CreateRandomTable,
+            this.TableSettings});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(800, 25);
@@ -192,6 +194,16 @@
             this.CreateRandomTable.Text = "Создать рандомную таблицу";
             this.CreateRandomTable.ToolTipText = "Создать рандомную таблицу";
             this.CreateRandomTable.Click += new System.EventHandler(this.CreateRandomTable_Click);
+            // 
+            // TableSettings
+            // 
+            this.TableSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.TableSettings.Image = ((System.Drawing.Image)(resources.GetObject("TableSettings.Image")));
+            this.TableSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TableSettings.Name = "TableSettings";
+            this.TableSettings.Size = new System.Drawing.Size(23, 22);
+            this.TableSettings.Text = "Настроить размер таблицы по умолчанию";
+            this.TableSettings.Click += new System.EventHandler(this.TableSettings_Click);
             // 
             // groupBox1
             // 
@@ -423,13 +435,14 @@
             this.contextMenuAnswer.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.GetAnswerContext});
             this.contextMenuAnswer.Name = "contextMenuAnswer";
-            this.contextMenuAnswer.Size = new System.Drawing.Size(161, 26);
+            this.contextMenuAnswer.Size = new System.Drawing.Size(181, 48);
             // 
             // GetAnswerContext
             // 
             this.GetAnswerContext.Name = "GetAnswerContext";
-            this.GetAnswerContext.Size = new System.Drawing.Size(160, 22);
+            this.GetAnswerContext.Size = new System.Drawing.Size(180, 22);
             this.GetAnswerContext.Text = "Получить ответ";
+            this.GetAnswerContext.Click += new System.EventHandler(this.GetAnswerContext_Click);
             // 
             // label5
             // 
@@ -527,7 +540,6 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton CreateRandomTable;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView tableNumbers;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button FillMainTable;
@@ -552,6 +564,8 @@
         private System.Windows.Forms.ToolStripMenuItem Exit;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.ToolStripButton TableSettings;
+        private System.Windows.Forms.DataGridView tableNumbers;
     }
 }
 

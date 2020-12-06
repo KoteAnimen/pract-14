@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using libmass;
 using findcolumns;
+using System.IO;
 
 namespace pract_13
 {
@@ -18,7 +19,20 @@ namespace pract_13
         public Form1()
         {
             InitializeComponent();
-            sizeTable.Text = "Размер таблицы -" + tableNumbers.RowCount + "x" + tableNumbers.ColumnCount;
+            try
+            {
+                StreamReader read = new StreamReader("config.ini");
+                SizeTable.columnCount = Convert.ToInt32(read.ReadLine());
+                SizeTable.rowCount = Convert.ToInt32(read.ReadLine());
+                LibMass.SizeTable(tableNumbers, SizeTable.columnCount, SizeTable.rowCount);
+                read.Close();
+                sizeTable.Text = "Размер таблицы -" + SizeTable.rowCount + "x" + SizeTable.columnCount;
+            }
+            catch
+            {
+                sizeTable.Text = "Размер таблицы -" + SizeTable.rowCount + "x" + SizeTable.columnCount;
+            }
+            
         }
 
         private void OpenTable_Click(object sender, EventArgs e)
@@ -55,7 +69,14 @@ namespace pract_13
 
         private void GetAnswer_Click(object sender, EventArgs e)
         {
-            answer.Text = FindColumns.CountColumns(tableNumbers).ToString();
+            try
+            {
+                answer.Text = FindColumns.CountColumns(tableNumbers).ToString();
+            }
+            catch(NullReferenceException ex)
+            {
+                MessageBox.Show("Заполните таблицу значениями.");
+            }
         }
 
         private void FillMainTable_Click(object sender, EventArgs e)
@@ -63,8 +84,8 @@ namespace pract_13
             SizeTable.columnCount = (int)countColumns.Value;
             SizeTable.rowCount = (int)countRows.Value;
             LibMass.SizeTable(tableNumbers, SizeTable.columnCount, SizeTable.rowCount);
-            LibMass.FillTable(tableNumbers, SizeTable.columnCount, SizeTable.rowCount);
-            sizeTable.Text = "Размер таблицы -" + tableNumbers.RowCount + "x" + tableNumbers.ColumnCount;
+            LibMass.FillTable(tableNumbers, (int)minNumber.Value, (int)maxNumber.Value);
+            sizeTable.Text = "Размер таблицы -" + SizeTable.rowCount + "x" + SizeTable.columnCount;
         }
 
         private void ChangeSizeByRows(object sender, EventArgs e)
@@ -72,7 +93,7 @@ namespace pract_13
             SizeTable.columnCount = (int)countColumns.Value;
             SizeTable.rowCount = (int)countRows.Value;
             LibMass.SizeTable(tableNumbers, SizeTable.columnCount, SizeTable.rowCount);
-            sizeTable.Text = "Размер таблицы -" + tableNumbers.RowCount + "x" + tableNumbers.ColumnCount;
+            sizeTable.Text = "Размер таблицы -" + SizeTable.rowCount + "x" + SizeTable.columnCount;
         }
 
         private void ChangeSiseByColumns(object sender, EventArgs e)
@@ -80,7 +101,7 @@ namespace pract_13
             SizeTable.columnCount = (int)countColumns.Value;
             SizeTable.rowCount = (int)countRows.Value;
             LibMass.SizeTable(tableNumbers, SizeTable.columnCount, SizeTable.rowCount);
-            sizeTable.Text = "Размер таблицы -" + tableNumbers.RowCount + "x" + tableNumbers.ColumnCount;
+            sizeTable.Text = "Размер таблицы -" + SizeTable.rowCount + "x" + SizeTable.columnCount;
         }
 
         private void FillTable_Click(object sender, EventArgs e)
@@ -88,8 +109,8 @@ namespace pract_13
             SizeTable.columnCount = (int)countColumns.Value;
             SizeTable.rowCount = (int)countRows.Value;
             LibMass.SizeTable(tableNumbers, SizeTable.columnCount, SizeTable.rowCount);
-            LibMass.FillTable(tableNumbers, SizeTable.columnCount, SizeTable.rowCount);
-            sizeTable.Text = "Размер таблицы -" + tableNumbers.RowCount + "x" + tableNumbers.ColumnCount;
+            LibMass.FillTable(tableNumbers, (int)minNumber.Value, (int)maxNumber.Value);
+            sizeTable.Text = "Размер таблицы -" + SizeTable.rowCount + "x" + SizeTable.columnCount;
         }
 
         private void AboutUs_Click(object sender, EventArgs e)
@@ -111,6 +132,26 @@ namespace pract_13
             pass.ShowDialog(this);// открываем форму авторизации в модальном режиме и передаем ссылку на родительскую форму
         }
 
+        private void TableSettings_Click(object sender, EventArgs e)
+        {
+            Settings setting = new Settings();            
+            setting.ShowDialog(this);
+            tableNumbers.RowCount = SizeTable.rowCount;
+            tableNumbers.ColumnCount = SizeTable.columnCount;
+            sizeTable.Text = "Размер таблицы -" + SizeTable.rowCount + "x" + SizeTable.columnCount;
+        }
+
+        private void GetAnswerContext_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                answer.Text = FindColumns.CountColumns(tableNumbers).ToString();
+            }
+            catch
+            {
+                MessageBox.Show("Заполните таблицу значениями.");
+            }            
+        }
     }
     public class SizeTable
     {
