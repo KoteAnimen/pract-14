@@ -74,25 +74,25 @@ namespace pract_13
 
         private void FillMainTable_Click(object sender, EventArgs e)
         {
-            FunctionFillTable();
+            FunctionCreateTable();
         }
 
         private void ChangeSizeByRows(object sender, EventArgs e)
         {
-            FunctionFillTable();
+            FunctionCreateTable();
         }
 
         private void ChangeSiseByColumns(object sender, EventArgs e)
         {
-            FunctionFillTable();
+            FunctionCreateTable();
         }
 
         private void FillTable_Click(object sender, EventArgs e)
         {
-            FunctionFillTable();
+            FunctionCreateTable();
         }
 
-        private void FunctionFillTable()
+        private void FunctionCreateTable()
         {
             SizeTable.columnCount = (int)countColumns.Value;
             SizeTable.rowCount = (int)countRows.Value;
