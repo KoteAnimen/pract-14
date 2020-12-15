@@ -32,8 +32,7 @@ namespace pract_13
             catch
             {
                 sizeTable.Text = "Размер таблицы -" + SizeTable.rowCount + "x" + SizeTable.columnCount;
-            }
-            
+            }            
         }
 
         private void OpenTable_Click(object sender, EventArgs e)
@@ -75,32 +74,25 @@ namespace pract_13
 
         private void FillMainTable_Click(object sender, EventArgs e)
         {
-            SizeTable.columnCount = (int)countColumns.Value;
-            SizeTable.rowCount = (int)countRows.Value;
-            LibMass.SizeTable(tableNumbers, SizeTable.columnCount, SizeTable.rowCount);
-            LibMass.FillTable(tableNumbers, (int)minNumber.Value, (int)maxNumber.Value);
-            sizeTable.Text = "Размер таблицы -" + SizeTable.rowCount + "x" + SizeTable.columnCount;
+            FunctionFillTable();
         }
 
         private void ChangeSizeByRows(object sender, EventArgs e)
         {
-            SizeTable.columnCount = (int)countColumns.Value;
-            SizeTable.rowCount = (int)countRows.Value;
-            LibMass.SizeTable(tableNumbers, SizeTable.columnCount, SizeTable.rowCount);
-            LibMass.FillTable(tableNumbers, (int)minNumber.Value, (int)maxNumber.Value);
-            sizeTable.Text = "Размер таблицы -" + SizeTable.rowCount + "x" + SizeTable.columnCount;
+            FunctionFillTable();
         }
 
         private void ChangeSiseByColumns(object sender, EventArgs e)
         {
-            SizeTable.columnCount = (int)countColumns.Value;
-            SizeTable.rowCount = (int)countRows.Value;
-            LibMass.SizeTable(tableNumbers, SizeTable.columnCount, SizeTable.rowCount);
-            LibMass.FillTable(tableNumbers, (int)minNumber.Value, (int)maxNumber.Value);
-            sizeTable.Text = "Размер таблицы -" + SizeTable.rowCount + "x" + SizeTable.columnCount;
+            FunctionFillTable();
         }
 
         private void FillTable_Click(object sender, EventArgs e)
+        {
+            FunctionFillTable();
+        }
+
+        private void FunctionFillTable()
         {
             SizeTable.columnCount = (int)countColumns.Value;
             SizeTable.rowCount = (int)countRows.Value;
@@ -119,7 +111,6 @@ namespace pract_13
             int row = tableNumbers.CurrentRow.Index + 1;
             int column = tableNumbers.CurrentCell.ColumnIndex + 1;
             numerBox.Text = "Номер строки - " + row.ToString() + " Номер столбца - " + column.ToString();
-
         }
 
         private void Pass(object sender, EventArgs e)
@@ -146,6 +137,5 @@ namespace pract_13
     {
         public static int columnCount;
         public static int rowCount;
-
     }
 }
